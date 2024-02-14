@@ -3,6 +3,9 @@ module prodapi
 go 1.19
 
 require (
+	github.com/ddosify/go-faker v0.1.1 // indirect
+	github.com/google/uuid v1.3.0 // indirect
+	github.com/jaswdr/faker v1.10.2 // indirect
 	github.com/labstack/echo/v4 v4.11.4 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
