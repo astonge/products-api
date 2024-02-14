@@ -2,18 +2,19 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 	"net/http"
-	"github.com/labstack/echo/v4"
+	"strconv"
+
 	"github.com/ddosify/go-faker/faker"
+	"github.com/labstack/echo/v4"
 )
 
 type product struct {
-	Id			int64	`json:"id" query:"id"`
-	Name 		string 	`json:"name"`
-	Price		float64 `json:price"`
-	Quantity 	int 	`json:"quantity"`
-	Image		string	`json:"image_url"`
+	Id       int64   `json:"id" query:"id"`
+	Name     string  `json:"name"`
+	Price    float64 `json:"price"`
+	Quantity int     `json:"quantity"`
+	Image    string  `json:"image_url"`
 }
 
 var products []product
@@ -45,9 +46,8 @@ func getProduct(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "bad request")
 	}
 	// Loop over products
-	for i,product := range products {
+	for i, product := range products {
 		if products[i].Id == id {
-			fmt.Println(product)
 			return c.JSON(http.StatusOK, product)
 		}
 	}
@@ -61,7 +61,7 @@ func getAllProducts(c echo.Context) error {
 
 func main() {
 	initProducts(50)
-	
+
 	e := echo.New()
 	e.GET("/", getAllProducts)
 	e.GET("/:id", getProduct)
